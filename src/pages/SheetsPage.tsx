@@ -24,6 +24,7 @@ export const SheetsPage: React.FC = () => {
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
         !q ||
+        item.titleAr.toLowerCase().includes(q) ||
         item.titleEn.toLowerCase().includes(q) ||
         item.descriptionEn.toLowerCase().includes(q) ||
         item.categoryEn.toLowerCase().includes(q);
@@ -97,14 +98,19 @@ export const SheetsPage: React.FC = () => {
             >
               <div>
                 <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#52B788] flex items-center justify-center shrink-0 border border-emerald-100 group-hover:bg-[#0B3C49] group-hover:text-emerald-400 transition-colors">
-                    <FileSpreadsheet className="w-5 h-5" />
+                  <div className="flex items-center gap-2">
+                    <span className="w-7 h-7 rounded-lg bg-slate-100 text-[#0B3C49] text-xs font-extrabold flex items-center justify-center shrink-0">
+                      {OFFICIAL_SHEETS.indexOf(sheet) + 1}
+                    </span>
+                    <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#52B788] flex items-center justify-center shrink-0 border border-emerald-100 group-hover:bg-[#0B3C49] group-hover:text-emerald-400 transition-colors">
+                      <FileSpreadsheet className="w-5 h-5" />
+                    </div>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#52B788] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
 
-                <h3 className="text-base font-bold text-[#0B3C49] group-hover:text-[#114B5F] transition-colors mb-1.5">
-                  {sheet.titleEn}
+                <h3 dir="auto" className="text-base font-bold text-[#0B3C49] group-hover:text-[#114B5F] transition-colors mb-1.5">
+                  {sheet.titleAr}
                 </h3>
 
                 <p className="text-xs text-slate-500 leading-relaxed mb-4">
