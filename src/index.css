@@ -94,11 +94,11 @@
   }
 }
 
-/* Glassmorphism & custom subtle effects */
+/* Soft surfaces & motion */
 .glass-header {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .subtle-border {
@@ -106,9 +106,126 @@
 }
 
 .shadow-subtle {
-  box-shadow: 0 1px 3px 0 rgba(11, 60, 73, 0.05), 0 1px 2px -1px rgba(11, 60, 73, 0.05);
+  box-shadow: 0 1px 2px 0 rgba(11, 60, 73, 0.04);
 }
 
 .shadow-card-hover {
-  box-shadow: 0 10px 25px -5px rgba(11, 60, 73, 0.08), 0 8px 10px -6px rgba(11, 60, 73, 0.05);
+  box-shadow: 0 12px 32px -12px rgba(11, 60, 73, 0.14), 0 4px 10px -6px rgba(11, 60, 73, 0.06);
+}
+
+/* Unified icon style: one stroke weight for every lucide icon */
+.lucide {
+  stroke-width: 1.75;
+}
+
+/* Shared card: soft border, gentle lift on hover */
+.soft-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 2px 0 rgba(11, 60, 73, 0.04);
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 300ms ease;
+}
+
+.soft-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(82, 183, 136, 0.55);
+  box-shadow: 0 12px 32px -12px rgba(11, 60, 73, 0.14), 0 4px 10px -6px rgba(11, 60, 73, 0.06);
+}
+
+.soft-card:active {
+  transform: translateY(-1px);
+}
+
+.icon-tile {
+  background-color: #EEF8F2;
+  color: #2D6A4F;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.group:hover .icon-tile {
+  background-color: #0B3C49;
+  color: #8FD9B6;
+}
+
+.link-arrow {
+  color: #94A3B8;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), color 300ms ease;
+}
+
+.group:hover .link-arrow {
+  color: #40916C;
+}
+
+.group:hover .link-arrow-external {
+  transform: translate(2px, -2px);
+}
+
+.group:hover .link-arrow-internal {
+  transform: translateX(3px);
+}
+
+button, a, input {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:focus-visible {
+  outline: 2px solid #52B788;
+  outline-offset: 2px;
+  border-radius: 0.75rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: translateY(6px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 250ms ease-out both;
+}
+
+.animate-fadeUp {
+  animation: fadeUp 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Stagger children of a grid so cards glide in one after another */
+.stagger > * {
+  animation: fadeUp 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stagger > *:nth-child(2) { animation-delay: 40ms; }
+.stagger > *:nth-child(3) { animation-delay: 80ms; }
+.stagger > *:nth-child(4) { animation-delay: 120ms; }
+.stagger > *:nth-child(5) { animation-delay: 160ms; }
+.stagger > *:nth-child(6) { animation-delay: 200ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
