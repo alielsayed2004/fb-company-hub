@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import type { PageId } from './types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { BottomNav } from './components/BottomNav';
 import { ShareModal } from './components/ShareModal';
 import { HomePage } from './pages/HomePage';
 import { SheetsPage } from './pages/SheetsPage';
@@ -18,7 +19,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 font-sans selection:bg-[#0B3C49]/15 selection:text-[#0B3C49]">
+    <div className="min-h-screen flex flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0 bg-[#F8FAFC] text-slate-900 font-sans selection:bg-[#0B3C49]/15 selection:text-[#0B3C49]">
       {/* Sticky Top Header */}
       <Header
         currentPage={currentPage}
@@ -40,6 +41,9 @@ export function App() {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
+
+      {/* Mobile & tablet tab bar */}
+      <BottomNav currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       {/* Share Portal Modal */}
       <ShareModal

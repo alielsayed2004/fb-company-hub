@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type { PageId } from '../types';
 import { COMPANY_CONFIG } from '../data/portalData';
 import {
@@ -6,8 +6,6 @@ import {
   Share2,
   Globe,
   ArrowUpRight,
-  Menu,
-  X,
   CreditCard,
   Home
 } from 'lucide-react';
@@ -23,8 +21,6 @@ export const Header: React.FC<HeaderProps> = ({
   setCurrentPage,
   onOpenShare,
 }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const navItems: { id: PageId; label: string; icon: React.ReactNode }[] = [
     { id: 'home', label: 'Home', icon: <Home className="w-4 h-4" /> },
     { id: 'sheets', label: 'Sheets & Documents', icon: <FileSpreadsheet className="w-4 h-4" /> },
@@ -33,7 +29,6 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleNavClick = (page: PageId) => {
     setCurrentPage(page);
-    setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -130,90 +125,17 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           </div>
 
-          {/* Mobile Menu Trigger */}
-          <div className="flex lg:hidden items-center gap-2">
-            <button
-              onClick={onOpenShare}
-              className="p-2.5 rounded-xl border border-emerald-200 bg-[#F4FBF7] text-[#0B3C49] sm:hidden"
-              aria-label="Share"
-            >
-              <Share2 className="w-4 h-4 text-[#52B788]" />
-            </button>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200 transition-colors duration-300"
-              aria-expanded={mobileMenuOpen}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
+          {/* Mobile Share (navigation lives in the bottom tab bar) */}
+          <button
+            onClick={onOpenShare}
+            className="sm:hidden p-2.5 rounded-xl border border-emerald-200 bg-[#F4FBF7] text-[#2D6A4F] transition-colors duration-300 hover:border-[#52B788]"
+            aria-label="Share"
+          >
+            <Share2 className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200/80 bg-white/95 px-4 sm:px-6 pt-3 pb-5 space-y-1.5 shadow-lg animate-scaleIn origin-top">
-          {navItems.map((item) => {
-            const isActive = currentPage === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-left transition-colors duration-300 ${
-                  isActive
-                    ? 'bg-[#0B3C49] text-white'
-                    : 'text-slate-700 hover:bg-slate-100'
-                }`}
-              >
-                <span className={isActive ? 'text-[#8FD9B6]' : 'text-slate-400'}>
-                  {item.icon}
-                </span>
-                <span>{item.label}</span>
-              </button>
-            );
-          })}
-
-          <a
-            href={COMPANY_CONFIG.officialBankPortalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors duration-300"
-          >
-            <span className="flex items-center gap-3">
-              <CreditCard className="w-4 h-4 text-slate-400" />
-              <span>Bank Details</span>
-            </span>
-            <ArrowUpRight className="w-4 h-4 text-slate-400" />
-          </a>
-
-          <a
-            href={COMPANY_CONFIG.officialWebsiteUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors duration-300"
-          >
-            <span className="flex items-center gap-3">
-              <Globe className="w-4 h-4 text-slate-400" />
-              <span>Official Website</span>
-            </span>
-            <ArrowUpRight className="w-4 h-4 text-slate-400" />
-          </a>
-
-          <div className="pt-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenShare();
-              }}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold bg-[#F4FBF7] text-[#0B3C49] border border-emerald-200"
-            >
-              <Share2 className="w-4 h-4 text-[#52B788]" />
-              <span>Share Hub</span>
-            </button>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
