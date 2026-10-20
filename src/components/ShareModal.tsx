@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Copy, Check, QrCode, ShieldCheck, Share2 } from 'lucide-react';
+import { IconTile } from './ui';
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -24,8 +25,11 @@ export const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-      <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative text-left">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn"
+      onClick={onClose}>
+      <div className="animate-scaleIn bg-white rounded-3xl max-w-md w-full max-h-[calc(100vh-2rem)] overflow-y-auto p-5 sm:p-6 shadow-2xl border border-slate-200 relative text-left"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={onClose}
           className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
@@ -35,9 +39,9 @@ export const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         <div className="flex items-center gap-3 mb-5">
-          <div className="w-11 h-11 rounded-2xl bg-emerald-50 text-[#114B5F] flex items-center justify-center border border-emerald-200/80">
-            <Share2 className="w-5 h-5 text-[#52B788]" />
-          </div>
+          <IconTile size="lg">
+            <Share2 className="w-5 h-5" />
+          </IconTile>
           <div>
             <h3 className="text-lg font-bold text-[#0B3C49]">Share Official Hub</h3>
             <p className="text-xs text-slate-500">Verified Institutional Resource</p>
@@ -62,7 +66,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
 
           <button
             onClick={handleCopy}
-            className={`w-full py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all ${
+            className={`w-full py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-colors duration-300 ${
               copied
                 ? 'bg-emerald-600 text-white'
                 : 'bg-[#0B3C49] hover:bg-[#114B5F] text-white shadow-xs'
