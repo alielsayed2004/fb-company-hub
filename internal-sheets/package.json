@@ -1,8 +1,0 @@
-{
-  "name": "fb-internal-sheets",
-  "private": true,
-  "type": "module",
-  "engines": {
-    "node": "22.x"
-  }
-}

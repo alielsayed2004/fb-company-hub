@@ -1,4 +1,4 @@
-import type { SheetItem, SocialItem } from '../types';
+import type { SocialItem } from '../types';
 
 
 export const COMPANY_CONFIG = {
@@ -14,93 +14,6 @@ export const COMPANY_CONFIG = {
   securityNoticeAr: 'لا تطلب F.B Company عبر هذه البوابة كلمات مرور أو PIN أو OTP أو بيانات دخول مصرفية.',
   securityNoticeEn: 'F.B Company will never request passwords, PINs, OTPs, or online banking credentials through this portal.',
 };
-
-export const OFFICIAL_SHEETS: SheetItem[] = [
-  {
-    id: 'attendance',
-    titleAr: 'حضور وانصراف العاشر',
-    titleEn: 'Attendance — 10th of Ramadan',
-    category: 'hr-ops',
-    categoryAr: 'العمليات والموارد البشرية',
-    categoryEn: 'Operations & HR',
-    descriptionAr: 'سجل متابعة حضور وانصراف فريق العمل وموقع العاشر من رمضان التشغيلي.',
-    descriptionEn: 'Daily operational schedule and attendance tracking.',
-    url: 'https://docs.google.com/spreadsheets/d/1JWTObtB2cvfjvUyjJzC_I3WCNgU-yS5gsONc4brRQkw/edit?usp=sharing',
-    fileType: 'Google Sheets',
-    requiresGoogleAuth: true,
-    isVerified: true,
-  },
-  {
-    id: 'consultations',
-    titleAr: 'استشارات من الموقع',
-    titleEn: 'Consulting Inquiries',
-    category: 'consulting-leads',
-    categoryAr: 'الاستشارات والمبيعات',
-    categoryEn: 'Consulting & Inquiries',
-    descriptionAr: 'سجل طلبات الاستشارات العقارية والتجارية الواردة عبر موقع الشركة الرسمي.',
-    descriptionEn: 'Commercial requests and franchise consultations.',
-    url: 'https://docs.google.com/spreadsheets/d/1v9YdbP1nFwJ2Ki4cjBVxoopfJwNhsUwaeNu9fJBWDpo/edit?usp=sharing',
-    fileType: 'Google Sheets',
-    requiresGoogleAuth: true,
-    isVerified: true,
-  },
-  {
-    id: 'hiring-applications',
-    titleAr: 'F.B Company - Hiring Applications',
-    titleEn: 'Hiring Applications',
-    category: 'hr-ops',
-    categoryAr: 'التوظيف والموارد البشرية',
-    categoryEn: 'Recruitment & Talent',
-    descriptionAr: 'قاعدة بيانات طلبات التوظيف واستمارات المتقدمين لفرص العمل الشاغرة بالشركة.',
-    descriptionEn: 'Employment applications and recruitment database.',
-    url: 'https://docs.google.com/spreadsheets/d/1QtmdixDc2MjIH-fa9QKz_BdG85BiKSkZBdI6bhPo6-0/edit?usp=sharing',
-    fileType: 'Google Sheets',
-    requiresGoogleAuth: true,
-    isVerified: true,
-  },
-  {
-    id: 'leads',
-    titleAr: 'leads',
-    titleEn: 'Commercial Leads',
-    category: 'consulting-leads',
-    categoryAr: 'الاستشارات والمبيعات',
-    categoryEn: 'Business Development',
-    descriptionAr: 'قاعدة بيانات جهات الاتصال والفرص التجارية وشبكة العلاقات الاستثمارية.',
-    descriptionEn: 'Business development directory and potential partner leads.',
-    url: 'https://docs.google.com/spreadsheets/d/1kKPKa-g1Ysi8Hb7HKnulyji7tsXZcfTvAiq8VfPQwFU/edit?usp=sharing',
-    fileType: 'Google Sheets',
-    requiresGoogleAuth: true,
-    isVerified: true,
-  },
-  {
-    id: 'fb-data',
-    titleAr: 'F&B_Data',
-    titleEn: 'F&B Data',
-    category: 'data-brands',
-    categoryAr: 'بيانات المواقع والأصول',
-    categoryEn: 'Assets & Locations',
-    descriptionAr: 'السجل المؤسسي المعتمد لبيانات المواقع والأصول العقارية التجارية في مصر.',
-    descriptionEn: 'Commercial locations and asset data registry.',
-    url: 'https://docs.google.com/spreadsheets/d/18OPWsWv-TJSvrDEc9bjAi59Sxfa7GxmgTyTvnonMJV0/edit?usp=sharing',
-    fileType: 'Google Sheets',
-    requiresGoogleAuth: true,
-    isVerified: true,
-  },
-  {
-    id: 'brand-qualification',
-    titleAr: 'Brand Qualification',
-    titleEn: 'Brand Qualification',
-    category: 'data-brands',
-    categoryAr: 'تأهيل العلامات التجارية',
-    categoryEn: 'Brand Partnerships',
-    descriptionAr: 'مصفوفة تقييم وتأهيل العلامات التجارية وشبكات الفرنشايز للمواقع التجارية الحيوية.',
-    descriptionEn: 'Franchise brand evaluation and location qualification.',
-    url: 'https://docs.google.com/spreadsheets/d/1Qj9i9GEzaQ_XQP6B_ZAxeMjgjAtB8DXqJzmdM0hyMxc/edit?usp=sharing',
-    fileType: 'Google Sheets',
-    requiresGoogleAuth: true,
-    isVerified: true,
-  },
-];
 
 export const OFFICIAL_SOCIALS: SocialItem[] = [
   {

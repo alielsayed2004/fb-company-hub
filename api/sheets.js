@@ -4,6 +4,7 @@ import { createHash, timingSafeEqual } from 'node:crypto';
 //   SHEETS_PASSWORD  the shared password for the page
 //   SHEETS_LINKS     JSON array: [{ "title": "...", "url": "https://docs.google.com/spreadsheets/d/..." }]
 // Nothing about the sheets is stored in this repository or sent to the browser before login.
+// Used by the Sheets page of the hub (src/pages/SheetsPage.tsx).
 
 const SHEET_URL = /^https:\/\/docs\.google\.com\/spreadsheets\/d\/[A-Za-z0-9_-]+\/edit\?usp=sharing$/;
 
