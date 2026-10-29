@@ -3,19 +3,10 @@ export type Language = 'ar' | 'en';
 export type PageId = 'home' | 'sheets' | 'social';
 
 
-export interface SheetItem {
-  id: string;
-  titleAr: string;
-  titleEn: string;
-  category: 'hr-ops' | 'consulting-leads' | 'data-brands';
-  categoryAr: string;
-  categoryEn: string;
-  descriptionAr: string;
-  descriptionEn: string;
+/* Returned by /api/sheets only after the password is accepted; never bundled. */
+export interface SheetLink {
+  title: string;
   url: string;
-  fileType: 'Google Sheets' | 'PDF';
-  requiresGoogleAuth: boolean;
-  isVerified: boolean;
 }
 
 export interface SocialItem {
